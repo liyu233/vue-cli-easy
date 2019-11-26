@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+
 import {mapState} from 'vuex'
 export default {
   name: 'home',
@@ -26,10 +27,16 @@ export default {
   methods:{
     /*axios测试*/
     axiosTest(){
-      let params = {
-        assetsId:1
-      };
-      axios.post('/api/assets/getAssetsById',params).then(res => {
+      const params = new URLSearchParams();
+      params.append('assetsId', 1);
+      axios.post('/api/assets/getAssetsById',params,
+          {
+            headers: {
+             // 'Authorization': token,
+            "Content-Type" : 'application/x-www-form-urlencoded',
+            }
+          }
+      ).then(res => {
         console.log(res)
       }).catch(err => {
         console.log(err)
