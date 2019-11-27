@@ -10,18 +10,22 @@
     <p class="p1">
       vuex测试store计算属性测试-<span style="color: red">{{ msgPlus }}</span>
     </p>
-    <p class="p2">
-      <button @click="axiosTest">axios</button>
+    <p class="p1">
+      vuex资产-<span style="color: red">{{ assetss }}</span>
     </p>
-    <p class="p2">
-      <button @click="changeMsg">置空</button>
+    <p>
+      <button class="p2" @click="axiosTest">axios</button>
+    </p>
+    <p>
+      <button class="p2" @click="changeMsg">置空</button>
+    </p>
+    <p>
+      <button class="p2" @click="getAssetss">获取资产信息</button>
     </p>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 import {mapState,mapGetters,mapActions} from 'vuex'
 export default {
   name: 'home',
@@ -31,12 +35,14 @@ export default {
     }),
     ...mapGetters({
       msgPlus:'example/msgPlus',
+      assetss:'example/assetss'
   })
   },
   methods:{
     /*提交store action*/
     ...mapActions({
-      changeMsgNoneMethos:'example/chageMsgNone'
+      changeMsgNoneMethos:'example/chageMsgNone',
+      getAssets:'example/getAssets'
     }),
     /*提交置空*/
     changeMsg(){
@@ -44,22 +50,14 @@ export default {
         example:'example',
       })
     },
+    getAssetss(){
+      this.getAssets({
+        id:1,
+      })
+    },
     /*axios测试*/
     axiosTest(){
-      const params = new URLSearchParams();
-      params.append('assetsId', 1);
-      axios.post('/api/assets/getAssetsById',params,
-          {
-            headers: {
-             // 'Authorization': token,
-            "Content-Type" : 'application/x-www-form-urlencoded',
-            }
-          }
-      ).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+
     },
   },
   components: {
@@ -78,5 +76,18 @@ export default {
   .p2{
     width: 100px;
     margin: 0 calc((100% - 100px)/2);
+    height: 30px;
+    outline: none;
+    color: #ffffff;
+    background-color: #42b983;
+    border: none;
+    border-radius: 3px;
+    line-height: 30px;
+  }
+  .p2:hover{
+    background-color: cadetblue;
+    /*line-height: 31px;
+    width: 101px;
+    height: 31px;*/
   }
 </style>
