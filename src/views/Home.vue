@@ -25,7 +25,7 @@ export default {
     })
   },
   methods:{
-    //axios测试
+    /*axios测试*/
     axiosTest(){
       const params = new URLSearchParams();
       params.append('assetsId', 1);
