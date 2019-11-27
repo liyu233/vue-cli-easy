@@ -4,10 +4,13 @@
     <p style="width: 100px;margin: 0 auto">
       便捷开发
     </p>
-    <p style="width: 500px;margin: 0 auto">
-      vuex测试，计算属性测试-<span style="color: red">{{ msg }}</span>
+    <p class="p1">
+      vuex测试12，计算属性测试-<span style="color: red">{{ msg }}</span>
     </p>
-    <p style="width: 100px;margin: 0 auto">
+    <p class="p1">
+      vuex测试store计算属性测试-<span style="color: red">{{ msgPlus }}</span>
+    </p>
+    <p class="p2">
       <button @click="axiosTest">axios</button>
     </p>
   </div>
@@ -16,15 +19,22 @@
 <script>
 import axios from 'axios'
 
-import {mapState} from 'vuex'
+import {mapState,mapGetters,mapActions} from 'vuex'
 export default {
   name: 'home',
   computed:{
     ...mapState({
       msg : state => state.example.msg + "-计算属性生效-",
-    })
+    }),
+    ...mapGetters({
+      msgPlus:'example/msgPlus',
+  })
   },
   methods:{
+    /*提交store action*/
+    ...mapActions({
+
+    }),
     /*axios测试*/
     axiosTest(){
       const params = new URLSearchParams();
@@ -48,3 +58,16 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .p1{
+    width: 100%;
+    margin: 0 auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+  }
+  .p2{
+    width: 100px;
+    margin: 0 calc((100% - 100px)/2);
+  }
+</style>

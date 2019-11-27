@@ -6,7 +6,10 @@ export default {
     },
 
     getters: {
-
+        /*计算msg返回*/
+        msgPlus: state => {
+            return state.msg + 'storegetters';
+        }
     },
 
     mutations: {
