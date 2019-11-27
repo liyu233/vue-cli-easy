@@ -9,7 +9,6 @@
   export default {
     computed:{
       ...mapState({
-        msg : state => state.example.msg + "-计算属性生效-",
         assets: state => state.example.assets
       }),
     },
