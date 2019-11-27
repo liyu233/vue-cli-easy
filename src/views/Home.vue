@@ -13,6 +13,9 @@
     <p class="p2">
       <button @click="axiosTest">axios</button>
     </p>
+    <p class="p2">
+      <button @click="changeMsg">置空</button>
+    </p>
   </div>
 </template>
 
@@ -33,8 +36,14 @@ export default {
   methods:{
     /*提交store action*/
     ...mapActions({
-
+      changeMsgNoneMethos:'example/chageMsgNone'
     }),
+    /*提交置空*/
+    changeMsg(){
+      this.changeMsgNoneMethos({
+        example:'example',
+      })
+    },
     /*axios测试*/
     axiosTest(){
       const params = new URLSearchParams();
